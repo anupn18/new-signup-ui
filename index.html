@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        form {
+            display: grid;
+            gap: 10px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f8f8f8;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Signup Form</h1>
+    <form id="signupForm">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="tel" id="phoneNumber" name="phoneNumber">
+
+        <label for="currency">Currency:</label>
+        <select id="currency" name="currency" required></select>
+
+        <label for="orgDisplayName">Organization Display Name:</label>
+        <input type="text" id="orgDisplayName" name="orgDisplayName" required>
+
+        <label for="orgName">Organization Name (URL without https://):</label>
+        <input type="text" id="orgName" name="orgName" required>
+
+        <label for="connectorName">Connector Name:</label>
+        <select id="connectorName" name="connectorName" required>
+            <option value="shopify">Shopify</option>
+            <option value="web">Web</option>
+        </select>
+
+        <label>
+            <input type="checkbox" id="copySegments" name="copySegments">
+            Copy Segments
+        </label>
+
+        <label for="country">Country:</label>
+        <select id="country" name="country" required></select>
+
+        <label>
+            <input type="checkbox" id="isManager" name="isManager">
+            Is Manager
+        </label>
+
+        <label for="timezone">Timezone:</label>
+        <select id="timezone" name="timezone" required></select>
+
+        <label>
+            <input type="checkbox" id="isAgency" name="isAgency">
+            Is Agency
+        </label>
+
+        <div id="agencyFields" class="hidden">
+            <label>
+                <input type="checkbox" id="isWhiteLabeledSignUp" name="isWhiteLabeledSignUp">
+                Is White Labeled Sign Up
+            </label>
+
+            <label for="agencyName">Agency Name:</label>
+            <input type="text" id="agencyName" name="agencyName">
+
+            <label for="agencyDomain">Agency Domain:</label>
+            <input type="text" id="agencyDomain" name="agencyDomain">
+        </div>
+
+        <label for="industry">Industry:</label>
+        <select id="industry" name="industry" required>
+            <option value="Technology">Technology</option>
+            <option value="Marketing">Marketing</option>
+        </select>
+
+        <label for="appsUsed">Apps Used (Optional, comma-separated):</label>
+        <input type="text" id="appsUsed" name="appsUsed">
+
+        <label>
+            <input type="checkbox" id="nurture" name="nurture" checked>
+            Nurture
+        </label>
+
+        <label for="environment">Environment:</label>
+        <select id="environment" name="environment" required>
+            <option value="production">Production</option>
+            <option value="staging">Staging</option>
+            <option value="dev">Dev</option>
+        </select>
+
+        <label for="apiKey">X-Moda-API-Key:</label>
+        <input type="text" id="apiKey" name="apiKey" required>
+
+        <button type="submit">Sign Up</button>
+    </form>
+    <div id="result"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone-with-data.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
