@@ -3,140 +3,317 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup Form</title>
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <title>Complete Signup Form</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
-        form {
-            display: grid;
-            gap: 10px;
+        .form-container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 800px;
+        }
+        h2 {
+            color: #4a5568;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 24px;
+            font-weight: 600;
+        }
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            flex: 1;
+        }
+        .label-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
         }
         label {
-            font-weight: bold;
+            color: #4a5568;
+            margin-right: 5px;
+            font-size: 14px;
         }
         input, select {
             width: 100%;
-            padding: 5px;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%234a5568' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .checkbox-group input {
+            width: auto;
+            margin-right: 10px;
         }
         button {
-            background-color: #4CAF50;
+            background-color: #4c51bf;
             color: white;
-            padding: 10px;
             border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
             cursor: pointer;
+            font-size: 16px;
+            width: 100%;
         }
-        #result {
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            background-color: #f8f8f8;
+        button:hover {
+            background-color: #434190;
         }
-        .hidden {
-            display: none;
+        .info-icon {
+            cursor: pointer;
+            color: #4a5568;
+            font-size: 14px;
+            margin-left: 5px;
+            position: relative;
+        }
+        .tooltip {
+            visibility: hidden;
+            width: 200px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 12px;
+        }
+        .info-icon:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
         }
     </style>
 </head>
 <body>
-    <h1>Signup Form</h1>
-    <form id="signupForm">
-        <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" name="firstName" required>
+    <div class="form-container">
+        <h2>Complete Signup Form</h2>
+        <form id="signupForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <div class="label-container">
+                        <label for="firstName">First Name</label>
+                        <span class="info-icon">ℹ️<span class="tooltip">Enter your first name</span></span>
+                    </div>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div class="form-group">
+                    <div class="label-container">
+                        <label for="lastName">Last Name</label>
+                        <span class="info-icon">ℹ️<span class="tooltip">Enter your last name</span></span>
+                    </div>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <div class="label-container">
+                        <label for="email">Email</label>
+                        <span class="info-icon">ℹ️<span class="tooltip">Enter your email address</span></span>
+                    </div>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <div class="label-container">
+                        <label for="phoneNumber">Phone Number</label>
+                        <span class="info-icon">ℹ️<span class="tooltip">Enter your phone number</span></span>
+                    </div>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <div class="label-container">
+                        <label for="country">Country</label>
+                        <span class="info-icon">ℹ️<span class="tooltip">Select your country</span></span>
+                    </div>
+                    <select id="country" name="country" required></select>
+                </div>
+                <div class="form-group">
+                    <div class="label-container">
+                        <label for="timezone">Timezone</label>
+                        <span class="info-icon">ℹ️<span class="tooltip">Select your timezone</span></span>
+                    </div>
+                    <select id="timezone" name="timezone" required></select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <div class="label-container">
+                        <label for="currency">Currency</label>
+                        <span class="info-icon">ℹ️<span class="tooltip">Select your preferred currency</span></span>
+                    </div>
+                    <select id="currency" name="currency" required></select>
+                </div>
+                <div class="form-group">
+                    <div class="label-container">
+                        <label for="industry">Industry</label>
+                        <span class="info-icon">ℹ️<span class="tooltip">Select your industry</span></span>
+                    </div>
+                    <select id="industry" name="industry" required>
+                        <option value="Technology">Technology</option>
+                        <option value="Marketing">Marketing</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <div class="label-container">
+                        <label for="orgDisplayName">Organization Display Name</label>
+                        <span class="info-icon">ℹ️<span class="tooltip">Enter your organization's display name</span></span>
+                    </div>
+                    <input type="text" id="orgDisplayName" name="orgDisplayName" required>
+                </div>
+                <div class="form-group">
+                    <div class="label-container">
+                        <label for="orgUrl">Organization URL</label>
+                        <span class="info-icon">ℹ️<span class="tooltip">Enter your organization's URL without https://</span></span>
+                    </div>
+                    <input type="text" id="orgUrl" name="orgUrl" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <div class="label-container">
+                        <label for="connectorName">Connector Name</label>
+                        <span class="info-icon">ℹ️<span class="tooltip">Select the connector name</span></span>
+                    </div>
+                    <select id="connectorName" name="connectorName" required>
+                        <option value="shopify">Shopify</option>
+                        <option value="web">Web</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <div class="label-container">
+                        <label for="environment">Environment</label>
+                        <span class="info-icon">ℹ️<span class="tooltip">Select the environment</span></span>
+                    </div>
+                    <select id="environment" name="environment" required>
+                        <option value="dev">Dev</option>
+                        <option value="staging">Staging</option>
+                        <option value="production">Production</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <div class="label-container">
+                        <label for="apiKey">X-Moda-API-Key</label>
+                        <span class="info-icon">ℹ️<span class="tooltip">Enter your API key</span></span>
+                    </div>
+                    <input type="text" id="apiKey" name="apiKey" required>
+                </div>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="copySegments" name="copySegments">
+                <label for="copySegments">Copy Segments</label>
+                <span class="info-icon">ℹ️<span class="tooltip">Check to copy segments</span></span>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="isManager" name="isManager">
+                <label for="isManager">Is Manager</label>
+                <span class="info-icon">ℹ️<span class="tooltip">Check if you are a manager</span></span>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="isAgency" name="isAgency">
+                <label for="isAgency">Is Agency</label>
+                <span class="info-icon">ℹ️<span class="tooltip">Check if this is an agency signup</span></span>
+            </div>
+            <div id="agencyFields" style="display: none;">
+                <div class="form-row">
+                    <div class="form-group">
+                        <div class="label-container">
+                            <label for="agencyName">Agency Name</label>
+                            <span class="info-icon">ℹ️<span class="tooltip">Enter the agency name</span></span>
+                        </div>
+                        <input type="text" id="agencyName" name="agencyName">
+                    </div>
+                    <div class="form-group">
+                        <div class="label-container">
+                            <label for="agencyDomain">Agency Domain</label>
+                            <span class="info-icon">ℹ️<span class="tooltip">Enter the agency domain</span></span>
+                        </div>
+                        <input type="text" id="agencyDomain" name="agencyDomain">
+                    </div>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="isWhiteLabeledSignUp" name="isWhiteLabeledSignUp">
+                    <label for="isWhiteLabeledSignUp">Is White Labeled Sign Up</label>
+                    <span class="info-icon">ℹ️<span class="tooltip">Check if this is a white-labeled sign-up</span></span>
+                </div>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="nurture" name="nurture">
+                <label for="nurture">Nurture</label>
+                <span class="info-icon">ℹ️<span class="tooltip">Check for nurture option</span></span>
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
 
-        <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" name="lastName" required>
+    <script>
+        // Sample data for dropdowns (replace with your full lists)
+        const countries = ['United States', 'United Kingdom', 'Canada', 'Australia', 'Germany', 'France', 'Japan', 'India', 'China'];
+        const timezones = ['UTC', 'UTC+1', 'UTC+2', 'UTC+3', 'UTC+4', 'UTC+5', 'UTC+5:30', 'UTC+6', 'UTC+7', 'UTC+8', 'UTC+9', 'UTC+10', 'UTC-4', 'UTC-5', 'UTC-6', 'UTC-7', 'UTC-8'];
+        const currencies = ['USD', 'EUR', 'GBP', 'JPY', 'AUD', 'CAD', 'CHF', 'CNY', 'INR'];
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email">
+        function populateDropdown(selectId, options) {
+            const select = document.getElementById(selectId);
+            options.forEach(option => {
+                const optionElement = document.createElement('option');
+                optionElement.value = option;
+                optionElement.textContent = option;
+                select.appendChild(optionElement);
+            });
+        }
 
-        <label for="phoneNumber">Phone Number:</label>
-        <input type="tel" id="phoneNumber" name="phoneNumber">
+        // Populate dropdowns
+        populateDropdown('country', countries);
+        populateDropdown('timezone', timezones);
+        populateDropdown('currency', currencies);
 
-        <label for="currency">Currency:</label>
-        <select id="currency" name="currency" required></select>
+        // Toggle agency fields visibility
+        document.getElementById('isAgency').addEventListener('change', function() {
+            document.getElementById('agencyFields').style.display = this.checked ? 'block' : 'none';
+        });
 
-        <label for="orgDisplayName">Organization Display Name:</label>
-        <input type="text" id="orgDisplayName" name="orgDisplayName" required>
-
-        <label for="orgName">Organization Name (URL without https://):</label>
-        <input type="text" id="orgName" name="orgName" required>
-
-        <label for="connectorName">Connector Name:</label>
-        <select id="connectorName" name="connectorName" required>
-            <option value="shopify">Shopify</option>
-            <option value="web">Web</option>
-        </select>
-
-        <label>
-            <input type="checkbox" id="copySegments" name="copySegments">
-            Copy Segments
-        </label>
-
-        <label for="country">Country:</label>
-        <select id="country" name="country" required></select>
-
-        <label>
-            <input type="checkbox" id="isManager" name="isManager">
-            Is Manager
-        </label>
-
-        <label for="timezone">Timezone:</label>
-        <select id="timezone" name="timezone" required></select>
-
-        <label>
-            <input type="checkbox" id="isAgency" name="isAgency">
-            Is Agency
-        </label>
-
-        <div id="agencyFields" class="hidden">
-            <label>
-                <input type="checkbox" id="isWhiteLabeledSignUp" name="isWhiteLabeledSignUp">
-                Is White Labeled Sign Up
-            </label>
-
-            <label for="agencyName">Agency Name:</label>
-            <input type="text" id="agencyName" name="agencyName">
-
-            <label for="agencyDomain">Agency Domain:</label>
-            <input type="text" id="agencyDomain" name="agencyDomain">
-        </div>
-
-        <label for="industry">Industry:</label>
-        <select id="industry" name="industry" required>
-            <option value="Technology">Technology</option>
-            <option value="Marketing">Marketing</option>
-        </select>
-
-        <label for="appsUsed">Apps Used (Optional, comma-separated):</label>
-        <input type="text" id="appsUsed" name="appsUsed">
-
-        <label>
-            <input type="checkbox" id="nurture" name="nurture" checked>
-            Nurture
-        </label>
-
-        <label for="environment">Environment:</label>
-        <select id="environment" name="environment" required>
-            <option value="production">Production</option>
-            <option value="staging">Staging</option>
-            <option value="dev">Dev</option>
-        </select>
-
-        <label for="apiKey">X-Moda-API-Key:</label>
-        <input type="text" id="apiKey" name="apiKey" required>
-
-        <button type="submit">Sign Up</button>
-    </form>
-    <div id="result"></div>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone-with-data.min.js"></script>
-    <script src="script.js"></script>
+        // Form submission handler
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            console.log('Form data:', data);
+            alert('Form submitted successfully!');
+        });
+    </script>
 </body>
 </html>
